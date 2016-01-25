@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>NanoTwi</title>
+    </head>
+    <body>
+        <form action="/timeline-force-refresh" method="POST">
+            <button type="submit">Refresh</button>
+        </form>
+        <ul>
+        {% for item in statuses %}
+            <li>
+                <div><small>
+                    <strong>{{ item.status.user.name }}</strong>
+                    @{{ item.status.user.screen_name }}
+                    <a href="{{ item.mobileLink }}">{{ item.status.created_at|date("m/d/Y H:i:s") }}</a>
+                </small></div>
+                <div>{{ item.readable|raw }}</div>
+
+                <div>
+                    {% for pic in item.getPictures() %}
+                        <img src="{{pic.media_url_https}}" alt="" />
+                    {% endfor %}                    
+                </div>
+            </li>
+        {% endfor %}
+        </ul>
+        <form action="/timeline-force-refresh" method="POST">
+            <button type="submit">Refresh</button>
+        </form>
+    </body>
+</html>

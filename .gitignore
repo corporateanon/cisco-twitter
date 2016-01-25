@@ -1,0 +1,5 @@
+/var/
+/vendor/
+/logs/*
+!/logs/README.md
+.env
