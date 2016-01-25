@@ -25,3 +25,22 @@ $app->post('/timeline-force-refresh', function ($req, $res, $args) {
                 ->withStatus(301)
                 ->withHeader('Location', '/');
 });
+
+$app->get('/services/timeline', function ($req, $res, $args) {
+        
+
+        if ($this->cache->contains('timeline')) {
+                $statuses = $this->cache->fetch('timeline');
+        } else {
+                $statuses = $this->twitter->request('statuses/home_timeline', 'GET', array('count' => 100));
+                $this->cache->save('timeline', $statuses, 60);
+        }
+
+        $tweets = array_map(function ($status) {
+                return new Tweet($status);
+        }, $statuses);
+    
+        return $this->view
+                ->render($res, 'timeline.xml', array('statuses' => $tweets))
+                ->withHeader('Content-Type', 'text/xml');
+});

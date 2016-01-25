@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<CiscoIPPhoneMenu>
+  <Title>Latest Tweets</Title>
+  <Prompt></Prompt>
+
+  {% for item in statuses %}
+  <MenuItem>
+    <Name>{{ item.status.text }}</Name>
+    <URL></URL>
+  </MenuItem>
+  {% endfor %}
+
+</CiscoIPPhoneMenu>
