@@ -32,7 +32,7 @@ $app->get('/services/timeline', function ($req, $res, $args) {
         if ($this->cache->contains('timeline')) {
                 $statuses = $this->cache->fetch('timeline');
         } else {
-                $statuses = $this->twitter->request('statuses/home_timeline', 'GET', array('count' => 100));
+                $statuses = $this->twitter->request('statuses/home_timeline', 'GET', array('count' => 20));
                 $this->cache->save('timeline', $statuses, 60);
         }
 
