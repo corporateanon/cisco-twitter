@@ -18,7 +18,7 @@ $container['logger'] = function ($container) {
 $container['view'] = function ($container) {
     $settings = $container->get('settings')['view'];
 
-    $view = new \Slim\Views\Twig('templates', [
+    $view = new \Slim\Views\Twig($settings['templates'], [
         'cache' => $settings['cache'],
         'debug' => true,
     ]);

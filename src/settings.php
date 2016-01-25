@@ -23,6 +23,7 @@ return [
 
         // Templates
         'view' => [
+            'templates' => $root . '/templates/',
             'cache' => $root . '/var/template-cache/',
         ],
 
