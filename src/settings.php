@@ -3,7 +3,7 @@
 $root = __DIR__ . '/..';
 
 $dotenv = new Dotenv\Dotenv($root);
-$dotenv->load();
+file_exists($root.'/.env') && $dotenv->load();
 
 
 return [
