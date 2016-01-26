@@ -3,17 +3,23 @@
 use \nanotwi\Tweet;
 
 
+function getBaseUri($req) {
+        $uri = $req->getUri();
+        return $uri->getScheme().'://'.$uri->getHost();
+}
+
 $app->get('/', function ($req, $res, $args) {
 
+
         return $this->view
-                ->render($res, 'index.xml')
+                ->render($res, 'index.xml', ['base' => getBaseUri($req)])
                 ->withHeader('Content-Type', 'text/xml');
 });
 
 $app->get('/services/test', function ($req, $res, $args) {
 
         return $this->view
-                ->render($res, 'test.xml')
+                ->render($res, 'test.xml', ['base' => getBaseUri($req)])
                 ->withHeader('Content-Type', 'text/xml');
 });
 
@@ -32,7 +38,7 @@ $app->get('/services/timeline', function ($req, $res, $args) {
         }, $statuses);
     
         return $this->view
-                ->render($res, 'timeline.xml', array('statuses' => $tweets))
+                ->render($res, 'timeline.xml', ['statuses' => $tweets, 'base' => getBaseUri($req) ] )
                 ->withHeader('Content-Type', 'text/xml');
 });
 
