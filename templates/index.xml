@@ -4,7 +4,19 @@
     <URL>{{ base }}/services/test</URL>
   </MenuItem>
   <MenuItem>
-    <Name>Tweeter</Name>
+    <Name>Test - cyrillic</Name>
+    <URL>{{ base }}/services/test-cyr</URL>
+  </MenuItem>
+  <MenuItem>
+    <Name>Test - no URLs</Name>
+    <URL>{{ base }}/services/test-no-url</URL>
+  </MenuItem>
+  <MenuItem>
+    <Name>Test - long items</Name>
+    <URL>{{ base }}/services/test-long</URL>
+  </MenuItem>
+  <MenuItem>
+    <Name>Twitter</Name>
     <URL>{{ base }}/services/timeline</URL>
   </MenuItem>
   <Prompt>Choose one</Prompt>

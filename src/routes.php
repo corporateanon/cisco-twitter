@@ -5,7 +5,13 @@ use \nanotwi\Tweet;
 
 function getBaseUri($req) {
         $uri = $req->getUri();
-        return $uri->getScheme().'://'.$uri->getHost();
+        $port = $uri->getPort();
+        if ($port !== 443 && $port !== 80) {
+            $port = ':'    .$port;
+        } else {
+                $port = '';
+        }
+        return $uri->getScheme().'://'.$uri->getHost().$port;
 }
 
 $app->get('/', function ($req, $res, $args) {
@@ -22,6 +28,28 @@ $app->get('/services/test', function ($req, $res, $args) {
                 ->render($res, 'test.xml', ['base' => getBaseUri($req)])
                 ->withHeader('Content-Type', 'text/xml');
 });
+
+$app->get('/services/test-cyr', function ($req, $res, $args) {
+
+        return $this->view
+                ->render($res, 'test-cyr.xml', ['base' => getBaseUri($req)])
+                ->withHeader('Content-Type', 'text/xml');
+});
+
+$app->get('/services/test-long', function ($req, $res, $args) {
+
+        return $this->view
+                ->render($res, 'test-long.xml', ['base' => getBaseUri($req)])
+                ->withHeader('Content-Type', 'text/xml');
+});
+
+$app->get('/services/test-no-url', function ($req, $res, $args) {
+
+        return $this->view
+                ->render($res, 'test-no-url.xml', ['base' => getBaseUri($req)])
+                ->withHeader('Content-Type', 'text/xml');
+});
+
 
 $app->get('/services/timeline', function ($req, $res, $args) {
         

@@ -1,0 +1,12 @@
+<CiscoIPPhoneMenu>
+  <Title>Latest Tweets</Title>
+  <Prompt>Fake data</Prompt>
+  <MenuItem>
+    <Name>Псевдо-твит 1 abc</Name>
+    <URL>?tweet1</URL>
+  </MenuItem>
+  <MenuItem>
+    <Name>Псевдо-твит 2 abc</Name>
+    <URL>?tweet2</URL>
+  </MenuItem>
+</CiscoIPPhoneMenu>
