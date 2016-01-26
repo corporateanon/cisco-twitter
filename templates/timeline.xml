@@ -4,7 +4,7 @@
 
   {% for item in statuses %}
   <MenuItem>
-    <Name>{{ item.status.text }}</Name>
+    <Name>{{ item.status.text[0:60] }}</Name>
     <URL></URL>
   </MenuItem>
   {% endfor %}
