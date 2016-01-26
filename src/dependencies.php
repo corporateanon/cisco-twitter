@@ -31,7 +31,7 @@ $container['view'] = function ($container) {
     return $view;
 };
 
-// Twig views
+// Low-level Twitter API
 $container['twitter'] = function ($container) {
     $settings = $container->get('settings')['twitter'];
 
@@ -51,4 +51,13 @@ $container['cache'] = function ($container) {
     $cache = new FilesystemCache($settings['path']);
     $cache->setNamespace('twitter_');
     return $cache;
+};
+
+
+// High-level Twitter API
+$container['nanoTwitter'] = function ($container) {
+    $twitter = $container->get('twitter');
+    $cache = $container->get('cache');
+
+    return new \nanotwi\NanoTwitter($twitter, $cache);
 };

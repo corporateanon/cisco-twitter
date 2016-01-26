@@ -2,6 +2,9 @@
 
 namespace nanotwi;
 
+use Underscore\Types\Strings;
+
+
 class Tweet {
         function __construct($status) {
                 $this->status = $status;
@@ -28,5 +31,22 @@ class Tweet {
                 });
 
                 return $pics;
+        }
+
+        function getTextChunks() {
+                return self::chunkSplitUnicode($this->getText(), 64);
+        }
+
+        function getText() {
+                if ($this->status->retweeted_status) {
+                        return $this->status->retweeted_status->text;
+                }
+                return $this->status->text;
+        }
+
+        protected static function chunkSplitUnicode($str, $l) {
+                return array_map(function ($aChunk) {
+                        return join($aChunk, '');
+                }, array_chunk(preg_split("//u", $str, -1, PREG_SPLIT_NO_EMPTY), $l));
         }
 }
