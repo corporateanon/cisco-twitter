@@ -6,10 +6,10 @@ use \nanotwi\Tweet;
 function getBaseUri($req) {
         $uri = $req->getUri();
         $port = $uri->getPort();
-        if ($port !== 443 && $port !== 80) {
-            $port = ':'    .$port;
-        } else {
+        if ($port == 443 || $port == 80 || !$port) {
                 $port = '';
+        } else {
+                $port = ':'.$port;
         }
         return $uri->getScheme().'://'.$uri->getHost().$port;
 }
