@@ -1,7 +1,14 @@
-<CiscoIPPhoneText>
+<CiscoIPPhoneMenu>
   <Title>{{ tweet.status.user.name }} @{{ tweet.status.user.screen_name }}</Title>
+
   {% if tweet.status.retweeted_status %}
   <Prompt>RT {{ tweet.status.retweeted_status.user.name }} @{{ tweet.status.retweeted_status.user.screen_name }}</Prompt>
   {% endif %}
-  <Text>{{ tweet.getText() }}</Text>
-</CiscoIPPhoneText>
+
+  {% for chunk in tweet.getTextChunks() %}
+  <MenuItem>
+    <Name>{{ chunk }}</Name>
+  </MenuItem>
+  {% endfor %}
+
+</CiscoIPPhoneMenu>
