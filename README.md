@@ -4,6 +4,8 @@ Create Twitter app in https://apps.twitter.com/.
 
 Grant it write permission.
 
+## Testing
+
 Create `.env` file in the project root and fill in the keys from your Twitter app:
 
 ```
@@ -12,8 +14,6 @@ TWITTER_CONSUMER_SECRET="paste-here"
 TWITTER_ACCESS_TOKEN="paste-here"
 TWITTER_ACCESS_TOKEN_SECRET="paste-here"
 ```
-
-## Testing
 
 `cd` to your project directory and run the following from the command line:
 
