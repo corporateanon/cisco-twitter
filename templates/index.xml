@@ -1,0 +1,12 @@
+<CiscoIPPhoneMenu>
+  <MenuItem>
+    <Name>Test</Name>
+    <URL>/services/test</URL>
+  </MenuItem>
+  <MenuItem>
+    <Name>Tweeter</Name>
+    <URL>/services/timeline</URL>
+  </MenuItem>
+  <Prompt>Choose one</Prompt>
+  <Title>Test Services</Title>
+</CiscoIPPhoneMenu>
