@@ -38,7 +38,7 @@ class Tweet {
         }
 
         function getText() {
-                if ($this->status->retweeted_status) {
+                if (property_exists($this->status, 'retweeted_status')) {
                         return $this->status->retweeted_status->text;
                 }
                 return $this->status->text;

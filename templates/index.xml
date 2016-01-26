@@ -1,8 +1,10 @@
 <CiscoIPPhoneMenu>
+  {% for service in services %}
   <MenuItem>
-    <Name>Twitter</Name>
-    <URL>{{ base }}/services/timeline</URL>
+    <Name>{{ service.name }}</Name>
+    <URL>{{ base_url() }}{{ path_for(service.route) }}</URL>
   </MenuItem>
-  <Prompt>Choose one</Prompt>
-  <Title>Test Services</Title>
+  {% endfor %}
+
+  <Title>My Services</Title>
 </CiscoIPPhoneMenu>

@@ -5,7 +5,7 @@
   {% for item in statuses %}
   <MenuItem>
     <Name>{{ item.getText()[0:60] }}</Name>
-    <URL>{{ base }}/services/tweet/{{ item.status.id_str }}</URL>
+    <URL>{{ base_url() }}{{ path_for('tweet', {'idStr': item.status.id_str}) }}</URL>
   </MenuItem>
   {% endfor %}
 
