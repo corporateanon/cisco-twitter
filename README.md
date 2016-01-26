@@ -27,6 +27,8 @@ Open the service at http://your.server.ip.address:8080/ from your phone.
 
 You don't have to make `.env` file. Just `git push` your code to Heroku and set the corresponding environment variables in the app management console (like you did it in `.env` file)
 
+**Attention! There is no authentication mechanism implemented. So deploying the app globally is a security violation!**
+
 ## Deploying to Apache
 
 TODO
