@@ -4,4 +4,9 @@
   <Prompt>RT {{ tweet.status.retweeted_status.user.name }} @{{ tweet.status.retweeted_status.user.screen_name }}</Prompt>
   {% endif %}
   <Text>{{ tweet.getText() }}</Text>
+  <SoftKeyItem>
+    <Name>Back</Name>
+    <URL>{{ base }}/services/timeline</URL>
+    <Position>4</Position>
+  </SoftKeyItem>
 </CiscoIPPhoneText>
