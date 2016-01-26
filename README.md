@@ -1,18 +1,32 @@
-# Slim Framework 3 Skeleton Application
+# Twitter XML service for Cisco IP Phone
 
-Use this skeleton application to quickly setup and start working on a new Slim Framework 3 application. This application uses the latest Slim 3 with the PHP-View template renderer. It also uses the Monolog logger.
+Create Twitter app in https://apps.twitter.com/.
 
-This skeleton application was built for Composer. This makes setting up a new Slim Framework application quick and easy.
+Grant it write permission.
 
-## Install the Application
+Create `.env` file in the project root and fill in the keys from your Twitter app:
 
-Run this command from the directory in which you want to install your new Slim Framework application.
+```
+TWITTER_CONSUMER_KEY="paste-here"
+TWITTER_CONSUMER_SECRET="paste-here"
+TWITTER_ACCESS_TOKEN="paste-here"
+TWITTER_ACCESS_TOKEN_SECRET="paste-here"
+```
 
-    php composer.phar create-project slim/slim-skeleton [my-app-name]
+## Testing
 
-Replace `[my-app-name]` with the desired directory name for your new application. You'll want to:
+`cd` to your project directory and run the following from the command line:
 
-* Point your virtual host document root to your new application's `public/` directory.
-* Ensure `logs/` is web writeable.
+```
+./debug
+```
 
-That's it! Now go build something cool.
+Open the service at http://your.server.ip.address:8080/ from your phone.
+
+## Deploying to Heroku
+
+You don't have to make `.env` file. Just `git push` your code to Heroku and set the corresponding environment variables in the app management console (like you did it in `.env` file)
+
+## Deploying to Apache
+
+TODO
