@@ -1,0 +1,9 @@
+<CiscoIPPhoneText>
+  <Title>Error!</Title>
+  <Text>{{error.message}}</Text>
+  <SoftKeyItem>
+    <Name>Back</Name>
+    <URL>{{ base_url() }}{{ path_for('timeline') }}</URL>
+    <Position>3</Position>
+  </SoftKeyItem>
+</CiscoIPPhoneText>
