@@ -1,0 +1,9 @@
+<CiscoIPPhoneInput>
+  <Title>Post new Tweet</Title>
+  <URL>{{ base_url() }}{{ path_for('create_tweet') }}</URL>
+  <InputItem>
+    <DisplayName>What is happening?</DisplayName>
+    <QueryStringParam>statusText</QueryStringParam>
+    <InputFlags>A</InputFlags>
+  </InputItem>
+</CiscoIPPhoneInput>

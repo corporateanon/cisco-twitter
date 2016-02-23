@@ -10,7 +10,12 @@ class NanoTwitter {
                 $this->cache = $cache;
         }
 
-        function getTimeline() {
+        public function createTweet($text) {
+                $this->twitter->send($text);
+                $this->cache->deleteAll(); //todo: does it work?
+        }
+
+        public function getTimeline() {
                 if ($this->cache->contains('timeline')) {
                         $statuses = $this->cache->fetch('timeline');
                 } else {
@@ -25,7 +30,7 @@ class NanoTwitter {
                 return $tweets;
         }
 
-        function getTweet($idStr) {
+        public function getTweet($idStr) {
                 if ($this->cache->contains('timeline')) {
                         $statuses = $this->cache->fetch('timeline');
 
