@@ -1,12 +1,29 @@
 <CiscoIPPhoneText>
+
   <Title>{{ tweet.status.user.name }} @{{ tweet.status.user.screen_name }}</Title>
   {% if tweet.status.retweeted_status %}
+
   <Prompt>RT {{ tweet.status.retweeted_status.user.name }} @{{ tweet.status.retweeted_status.user.screen_name }}</Prompt>
   {% endif %}
+
   <Text>{{ tweet.getText() }}</Text>
+
+  <SoftKeyItem>
+    <Name>Like</Name>
+    <URL>{{ base_url() }}{{ path_for('like'), { 'idStr':tweet.status.id_str } }}</URL>
+    <Position>1</Position>
+  </SoftKeyItem>
+
+  <SoftKeyItem>
+    <Name>Retweet</Name>
+    <URL>{{ base_url() }}{{ path_for('retweet', { 'idStr':tweet.status.id_str }) }}</URL>
+    <Position>2</Position>
+  </SoftKeyItem>
+
   <SoftKeyItem>
     <Name>Back</Name>
     <URL>{{ base_url() }}{{ path_for('timeline') }}</URL>
     <Position>3</Position>
   </SoftKeyItem>
+
 </CiscoIPPhoneText>
