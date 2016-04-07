@@ -1,0 +1,10 @@
+<CiscoIPPhoneInput>
+  <Title>Authorize</Title>
+  <URL>{{ base_url() }}{{ path_for('enter_pin', { key: shortUrlKey }) }}</URL>
+  <InputItem>
+    <DisplayName>Visit: {{ base_url() }}{{ path_for('show_pin', { key: shortUrlKey }) }} in your browser, then enter the pin below</DisplayName>
+    <QueryStringParam>pin</QueryStringParam>
+    <InputFlags>N</InputFlags>
+  </InputItem>
+</CiscoIPPhoneInput>
+

@@ -61,3 +61,12 @@ $container['nanoTwitter'] = function ($container) {
 
     return new \nanotwi\NanoTwitter($twitter, $cache);
 };
+
+
+// PIN-based Twitter OAuth scenario
+$container['oAuthFlow'] = function ($container) {
+    $settings = $container->get('settings')['twitter'];
+    $cache = $container->get('cache');
+
+    return new \nanotwi\OAuthFlow($settings['consumerKey'], $settings['consumerSecret'], $cache);
+};

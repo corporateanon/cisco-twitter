@@ -8,18 +8,18 @@
 
   <Text>{{ tweet.getText() }}</Text>
 
-  <SoftKeyItem>
+{#  <SoftKeyItem>
     <Name>Like</Name>
-    <URL>{{ base_url() }}{{ path_for('like'), { 'idStr':tweet.status.id_str } }}</URL>
+    <URL>{{ base_url() }}{{ path_for('like', { 'idStr':tweet.status.id_str }) }}</URL>
     <Position>1</Position>
   </SoftKeyItem>
-
-  <SoftKeyItem>
+#}
+{#  <SoftKeyItem>
     <Name>Retweet</Name>
     <URL>{{ base_url() }}{{ path_for('retweet', { 'idStr':tweet.status.id_str }) }}</URL>
     <Position>2</Position>
   </SoftKeyItem>
-
+#}
   <SoftKeyItem>
     <Name>Back</Name>
     <URL>{{ base_url() }}{{ path_for('timeline') }}</URL>

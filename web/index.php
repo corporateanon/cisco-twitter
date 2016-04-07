@@ -10,8 +10,6 @@ if (PHP_SAPI == 'cli-server') {
 
 require __DIR__ . '/../vendor/autoload.php';
 
-session_start();
-
 // Instantiate the app
 $settings = require __DIR__ . '/../src/settings.php';
 $app = new \Slim\App($settings);
@@ -24,6 +22,9 @@ require __DIR__ . '/../src/middleware.php';
 
 // Register routes
 require __DIR__ . '/../src/routes.php';
+
+// Register route midlleware
+require __DIR__ . '/../src/routes-middleware.php';
 
 // Run app
 $app->run();
