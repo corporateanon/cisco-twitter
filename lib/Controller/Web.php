@@ -9,12 +9,12 @@ use nanotwi\Middleware\User;
 class Web extends Base {
 
     public function autologinLink(ServerRequestInterface $request, ResponseInterface $response) {
-        /* @var $flow nanotwi\OAuthFlow */
-        $flow = $this->oAuthFlow;
+        /* @var $autoLogin \nanotwi\AutoLogin */
+        $autoLogin = $this->autoLogin;
 
-        $user = User::userFromRequest($request);
+        $user = User::getOauthUser($request);
 
-        $hash = $flow->getAutologinLink($user);
+        $hash = $autoLogin->createAutologinToken($user);
 
         return $this->view->render($response, 'web.twig', [ 'user' => $user, 'link' => $hash]);
     }

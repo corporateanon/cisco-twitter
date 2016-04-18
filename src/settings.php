@@ -31,8 +31,6 @@ return [
         'twitter' => [
             'consumerKey'       => getenv('TWITTER_CONSUMER_KEY'),
             'consumerSecret'    => getenv('TWITTER_CONSUMER_SECRET'),
-            'accessToken'       => getenv('TWITTER_ACCESS_TOKEN'),
-            'accessTokenSecret' => getenv('TWITTER_ACCESS_TOKEN_SECRET'),
             'autologinKey'      => getenv('TWITTER_AUTOLOGIN_KEY'),
         ],
     ],

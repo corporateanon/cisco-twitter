@@ -28,21 +28,9 @@ $container['view'] = function ($container) {
         $container['request']->getUri()
     ));
 
+    $view->addExtension(new nanotwi\Views\TwigExtensionAutologinPath($container));
+
     return $view;
-};
-
-// Low-level Twitter API
-$container['twitter'] = function ($container) {
-    $settings = $container->get('settings')['twitter'];
-
-    $twitter = new Twitter(
-        $settings['consumerKey'],
-        $settings['consumerSecret'],
-        $settings['accessToken'],
-        $settings['accessTokenSecret']
-    );
-
-    return $twitter;
 };
 
 // Twig views
@@ -56,17 +44,24 @@ $container['cache'] = function ($container) {
 
 // High-level Twitter API
 $container['nanoTwitter'] = function ($container) {
-    $twitter = $container->get('twitter');
+    $settings = $container->get('settings')['twitter'];
+
     $cache = $container->get('cache');
 
-    return new \nanotwi\NanoTwitter($twitter, $cache);
+    return new \nanotwi\NanoTwitter($settings, $cache);
 };
 
 
-// PIN-based Twitter OAuth scenario
+// Twitter OAuth
 $container['oAuthFlow'] = function ($container) {
     $settings = $container->get('settings')['twitter'];
-    $cache = $container->get('cache');
 
-    return new \nanotwi\OAuthFlow($settings['consumerKey'], $settings['consumerSecret'], $cache);
+    return new \nanotwi\OAuthFlow($settings['consumerKey'], $settings['consumerSecret']);
+};
+
+// Auto-login link
+$container['autoLogin'] = function ($container) {
+    $settings = $container->get('settings')['twitter'];
+
+    return new \nanotwi\AutoLogin($settings['autologinKey']);
 };

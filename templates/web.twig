@@ -2,5 +2,5 @@
     You are authenticated as <b>{{user.screenName}}</b>.
 </p>
 <p>
-    Your auto-login link is {{link}}
+    Your auto-login link is {{ base_url() }}{{ path_for('timeline', { 'token': link }) }}
 </p>

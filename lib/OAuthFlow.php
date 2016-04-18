@@ -8,14 +8,12 @@ use Psr\Http\Message\ServerRequestInterface;
 
 class OAuthFlow {
 
-    private $autologinKey;
     private $consumerSecret;
     private $consumerKey;
 
-    public function __construct($consumerKey, $consumerSecret, $autologinKey) {
+    public function __construct($consumerKey, $consumerSecret) {
         $this->consumerKey = $consumerKey;
         $this->consumerSecret = $consumerSecret;
-        $this->autologinKey = $autologinKey;
     }
 
     public function startAuthentication(ResponseInterface $res, $callback) {
@@ -38,13 +36,6 @@ class OAuthFlow {
         
         $accessToken = $conn->oauth('oauth/access_token', ['oauth_verifier' => $verifier]);
         $_SESSION['twitterUser'] = $accessToken;
-    }
-    
-    public function getAutologinLink(TwitterUser $user) {
-        $tokens = $user->oauthToken . ':' . $user->oauthTokenSecret;
-        $keyHash = md5($this->autologinKey, true);
-        $base64 = openssl_encrypt($tokens, 'AES-256-CTR', $keyHash);
-        return urlencode($base64);
     }
 
     /**

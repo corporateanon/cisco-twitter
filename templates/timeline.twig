@@ -5,13 +5,13 @@
   {% for item in statuses %}
   <MenuItem>
     <Name>{{ item.getText()[0:60] }}</Name>
-    <URL>{{ base_url() }}{{ path_for('tweet', {'idStr': item.status.id_str}) }}</URL>
+    <URL>{{ base_url() }}{{ autologin_path_for('tweet', {'idStr': item.status.id_str}) }}</URL>
   </MenuItem>
   {% endfor %}
 
   <SoftKeyItem>
     <Name>Tweet!</Name>
-    <URL>{{ base_url() }}{{ path_for('compose') }}</URL>
+    <URL>{{ base_url() }}{{ autologin_path_for('compose') }}</URL>
     <Position>3</Position>
   </SoftKeyItem>
 

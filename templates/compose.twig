@@ -1,6 +1,6 @@
 <CiscoIPPhoneInput>
   <Title>Post new Tweet</Title>
-  <URL>{{ base_url() }}{{ path_for('create_tweet') }}</URL>
+  <URL>{{ base_url() }}{{ autologin_path_for('create_tweet') }}</URL>
   <InputItem>
     <DisplayName>What is happening?</DisplayName>
     <QueryStringParam>statusText</QueryStringParam>

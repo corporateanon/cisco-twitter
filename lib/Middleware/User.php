@@ -4,6 +4,7 @@ namespace nanotwi\Middleware;
 use Psr\Http\Message\ServerRequestInterface;
 use Psr\Http\Message\ResponseInterface;
 use \nanotwi\TwitterUser;
+
 class User {
 
     const USER = 'nanotwi\\Middleware\\User';
@@ -25,7 +26,7 @@ class User {
         return $next($request->withAttribute(self::USER, $user), $response);
     }
     
-    public static function userFromRequest(ServerRequestInterface $request) {
+    public static function getOauthUser(ServerRequestInterface $request) {
         return new TwitterUser($request->getAttribute(self::USER));
     }
 
