@@ -41,7 +41,7 @@ class AutoLogin {
         if (strpos($tokens, self::SEPARATOR) === false) {
             throw new AutologinException('Could not parse auto-login token');
         }
-        list($oAuthToken, $oAuthTokenSecret) = split(self::SEPARATOR, $tokens);
+        list($oAuthToken, $oAuthTokenSecret) = \split(self::SEPARATOR, $tokens);
         return [
             'oAuthToken' => $oAuthToken,
             'oAuthTokenSecret' => $oAuthTokenSecret
