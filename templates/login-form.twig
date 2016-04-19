@@ -1,4 +1,11 @@
-<form method="post" action="{{ base_url() }}{{ path_for('autologin-link') }}">
-    <p>You can create autologin link and use it as your service URL</p>
-    <p><button type="submit">Login with Twitter and create link</button></p>
-</form>
+{% extends "layout.twig" %}
+
+{% block content %}
+    <div class="page-header">
+        <h1>Cisco Phone Twitter <small>Login</small></h1>
+    </div>
+    <form method="post" action="{{ base_url() }}{{ path_for('login') }}" class="form">
+        <p>You are not authorized</p>
+        <p><button type="submit" class="btn btn-primary"><i class="fa fa-twitter"></i>Login with Twitter</button></p>
+    </form>
+{% endblock %}

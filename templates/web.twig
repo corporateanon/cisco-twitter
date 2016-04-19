@@ -1,6 +1,41 @@
-<p>
-    You are authenticated as <b>{{user.screenName}}</b>.
-</p>
-<p>
-    Your auto-login link is {{ base_url() }}{{ path_for('timeline', { 'token': link }) }}
-</p>
+{% extends "layout.twig" %}
+
+{% block content %}
+    <div class="page-header">
+        <h1>Cisco Phone Twitter <small>Auto-Login Link</small></h1>
+    </div>
+    <div class="jumbotron">
+        <p>Hello, <i class="fa fa-twitter"></i><b>{{user.screenName}}</b>!</p>
+        
+
+        <div class="form-group">
+            <label>Copy the following link and use it as your phone service URL:</label>
+            <textarea rows="4" readonly class="nt-textarea-url form-control">{{ base_url() }}{{ path_for('timeline', { 'token': link }) }}</textarea>
+            <button class="nt-action-copy btn btn-sm btn-link pull-right" data-clipboard-target=".nt-textarea-url">
+                <i class="fa fa-clipboard"></i>
+                Copy to Clipboard
+            </button>
+        </div>
+        
+        
+
+        <div class="form-group">
+            <label>Here is the code you can use with your 6900/7900 series IP phone:</label>
+            <textarea rows="12" readonly class="nt-textarea-menu form-control"><CiscoIPPhoneMenu>
+    <Title>Services</Title>
+    <MenuItem>
+        <Name>Twitter</Name>
+        <URL>{{ base_url() }}{{ path_for('timeline', { 'token': link }) }}</URL>
+    </MenuItem>
+</CiscoIPPhoneMenu></textarea>
+            <button class="nt-action-copy btn btn-sm btn-link pull-right" data-clipboard-target=".nt-textarea-menu">
+                <i class="fa fa-clipboard"></i>
+                Copy to Clipboard
+            </button>
+        </div>
+    </div>
+    
+    <script src="{{ base_url() }}/static/js/clipboard.js"></script>
+    <script src="{{ base_url() }}/static/js/web.js"></script>
+
+{% endblock %}
