@@ -28,6 +28,6 @@ class ProxiedHttpsSupport {
         if(!$request->hasHeader(self::PROTO_HEADER_HEROKU)) {
             return $uri;
         }
-        return $uri->withScheme($request->getHeader(self::PROTO_HEADER_HEROKU));
+        return $uri->withScheme($request->getHeader(self::PROTO_HEADER_HEROKU)[0]);
     }
 }
