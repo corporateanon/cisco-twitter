@@ -25,7 +25,7 @@ $container['view'] = function ($container) {
 
     $view->addExtension(new \Slim\Views\TwigExtension(
         $container['router'],
-        $container['request']->getUri()
+        \nanotwi\Middleware\ProxiedHttpsSupport::getRealUri($container['request'])
     ));
 
     $view->addExtension(new nanotwi\Views\TwigExtensionAutologinPath($container));
