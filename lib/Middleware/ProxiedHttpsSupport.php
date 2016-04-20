@@ -30,7 +30,7 @@ class ProxiedHttpsSupport {
             $uri = $uri->withScheme($request->getHeader(self::PROTO_HEADER_HEROKU)[0]);
         }
         if($request->hasHeader(self::PORT_HEADER_HEROKU)) {
-            $uri = $uri->withScheme(intval($request->getHeader(self::PORT_HEADER_HEROKU)[0]));
+            $uri = $uri->withPort(intval($request->getHeader(self::PORT_HEADER_HEROKU)[0]));
         }
         return $uri;
     }
