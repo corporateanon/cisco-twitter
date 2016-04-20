@@ -8,6 +8,7 @@ use Psr\Http\Message\ResponseInterface;
 class ProxiedHttpsSupport {
 
     const PROTO_HEADER_HEROKU = 'x-forwarded-proto';
+    const PORT_HEADER_HEROKU = 'x-forwarded-port';
 
     /**
      * Execute the middleware.
@@ -25,9 +26,12 @@ class ProxiedHttpsSupport {
     public static function getRealUri(ServerRequestInterface $request) {
         $uri = $request->getUri();
 
-        if(!$request->hasHeader(self::PROTO_HEADER_HEROKU)) {
-            return $uri;
+        if($request->hasHeader(self::PROTO_HEADER_HEROKU)) {
+            $uri = $uri->withScheme($request->getHeader(self::PROTO_HEADER_HEROKU)[0]);
         }
-        return $uri->withScheme($request->getHeader(self::PROTO_HEADER_HEROKU)[0]);
+        if($request->hasHeader(self::PORT_HEADER_HEROKU)) {
+            $uri = $uri->withScheme(intval($request->getHeader(self::PORT_HEADER_HEROKU)[0]));
+        }
+        return $uri;
     }
 }
